@@ -18,14 +18,14 @@ export function filename(ext = "txt") {
   return `${date}_${nanoid(8)}.${ext}`;
 }
 
-export function writeReportStream() {
-  const p = path.join(reportPath, filename());
-  const writeStream = fs.createWriteStream(p, {
-    flags: "w",
-    encoding: "utf-8",
-  });
-  return writeStream;
-}
+// export function writeReportStream() {
+//   const p = path.join(reportPath, filename());
+//   const writeStream = fs.createWriteStream(p, {
+//     flags: "w",
+//     encoding: "utf-8",
+//   });
+//   return writeStream;
+// }
 
 /**
  * @param dataSource {{[key:string]:string}[]}
@@ -71,7 +71,7 @@ export function createReportFile(dataSource) {
     "!cols": colsOptions,
   };
 
-  const buffer = xlsx.build([{ name: "mySheetName", data: data }], {
+  const buffer = xlsx.build([{ name: "sheet", data: data }], {
     sheetOptions,
   }); // Returns a buffe
 
