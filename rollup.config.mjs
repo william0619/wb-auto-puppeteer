@@ -9,9 +9,15 @@ import commonjs from "@rollup/plugin-commonjs";
 export default {
   input: "./src/main.mjs",
   output: {
+    filename: "bundle.js",
     format: "es",
     dir: "dist",
   },
-  plugins: [nodeResolve(), commonjs()],
+  plugins: [
+    nodeResolve(),
+    // nodeResolve({ resolveOnly: ["puppeteer-core"] }),
+    commonjs(),
+    terser(),
+  ],
   external: ["puppeteer"],
 };

@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 import xlsx from "node-xlsx";
 
+const p = process.cwd();
 export const reportPath = path.resolve(import.meta.dirname, "../report");
 
 export function filename(ext = "txt") {

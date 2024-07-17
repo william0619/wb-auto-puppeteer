@@ -1,15 +1,26 @@
 {
   "name": "auto-puppeteer",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./src/main.mjs",
   "scripts": {
     "start": "node src/main.mjs",
     "build": " rimraf ./dist && rollup -c",
-    "build2": "rm -rf out && rollup -c &&  gzip -k --best -r -f out",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:pkg": "pkg .",
+    "build:pkg2": "pkg package.json --out-path ./build"
+  },
+  "bin": "./dist/main.mjs",
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "assets": "assets/**/*",
+    "targets": [
+      "node18-macos-arm64",
+      "node18-macos-x64",
+      "node18-win-x64"
+    ],
+    "outputPath": "build"
   },
   "engines": {
-    "node": ">= 20"
+    "node": ">= 18"
   },
   "type": "module",
   "author": "",
@@ -23,6 +34,7 @@
     "puppeteer-core": "^22.13.0"
   },
   "devDependencies": {
+    "pkg": "^5.8.1",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@types/node": "^20.14.11",
@@ -31,6 +43,7 @@
     "rollup": "^4.18.1",
     "rollup-plugin-terser": "^7.0.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "xlsx": "^0.18.5"
   }
 }

@@ -19,6 +19,8 @@ bin-release/
 /node_modules
 /.idea
 /dist
+/report
+/build
 /storybook-static
 .DS_Store
 /.DS_Store
