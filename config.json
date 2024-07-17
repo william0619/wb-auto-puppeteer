@@ -1,0 +1,13 @@
+{
+  "customerIds": ["7880501359"],
+  "pages": {
+    "https://ad.weibo.com/blitz?customer_id={id}": {
+      "apis": [
+        {
+          "url": "https://gateway.biz.weibo.com/report/effect/get_preview_index",
+          "taskName": "get_preview"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "auto-puppeteer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/main.mjs",
+    "build": " rimraf ./dist && rollup -c",
+    "build2": "rm -rf out && rollup -c &&  gzip -k --best -r -f out",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">= 20"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dayjs": "^1.11.11",
+    "nanoid": "^5.0.7",
+    "node-xlsx": "^0.24.0",
+    "puppeteer": "^22.13.0",
+    "puppeteer-core": "^22.13.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@types/node": "^20.14.11",
+    "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.18.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
