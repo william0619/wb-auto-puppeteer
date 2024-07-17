@@ -51,11 +51,10 @@ export class Task {
   async getPreview(page, cid) {
     const startDate = dayjs().format("YYYY-MM-DD");
     const endDate = dayjs().format("YYYY-MM-DD");
-    console.log("startDate", startDate);
     return await page.evaluate(
       async ({ cid, startDate, endDate }) => {
         const res = await window.fetch(
-          `https://gateway.biz.weibo.com/report/effect/get_preview_index?app=superfans&app=superfans&customer_id=${cid}&start_date=2024-07-01&end_date=${endDate}`,
+          `https://gateway.biz.weibo.com/report/effect/get_preview_index?app=superfans&app=superfans&customer_id=${cid}&start_date=${startDate}&end_date=${endDate}`,
           {
             method: "GET",
             mode: "cors",

@@ -3,6 +3,7 @@
  create_at:2024/7/17
  **/
 import fs from "node:fs/promises";
+import path from "node:path";
 
 export async function connectInfo() {
   const json = await fetch("http://localhost:9222/json/version");
@@ -10,7 +11,10 @@ export async function connectInfo() {
 }
 
 export async function getConfigJson() {
-  const json = await fs.readFile("../config.json", { encoding: "utf-8" });
+  const cwd = process.cwd();
+
+  const filePath = path.resolve(cwd, "./config.json");
+  const json = await fs.readFile(filePath, { encoding: "utf-8" });
   return JSON.parse(json);
 }
 

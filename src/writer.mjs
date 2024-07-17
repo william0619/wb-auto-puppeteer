@@ -9,11 +9,12 @@ import dayjs from "dayjs";
 import { nanoid } from "nanoid";
 import xlsx from "node-xlsx";
 
-const p = process.cwd();
-export const reportPath = path.resolve(import.meta.dirname, "../report");
+const cwd = process.cwd();
+
+export const reportPath = path.resolve(cwd, "./report");
 
 export function filename(ext = "txt") {
-  const date = dayjs().format("YYYY-MM-DD");
+  const date = dayjs().format("YYYY-MM-DD_HH:mm");
   return `${date}_${nanoid(8)}.${ext}`;
 }
 

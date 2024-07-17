@@ -8,7 +8,7 @@
     "build:pkg": "pkg .",
     "build:pkg2": "pkg package.json --out-path ./build"
   },
-  "bin": "./dist/main.mjs",
+  "bin": "./dist/main.js",
   "pkg": {
     "scripts": "dist/**/*.js",
     "assets": "assets/**/*",
