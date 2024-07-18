@@ -6,10 +6,17 @@
 import fs from "node:fs";
 import path from "node:path";
 const cwd = process.cwd();
-const src = path.resolve(cwd, "./config.json");
-const dist = path.resolve(cwd, "./build/config.json");
 
-function copyConfFile(src, dist) {
+function copyConfFile() {
+  const src = path.resolve(cwd, "./config.json");
+  const dist = path.resolve(cwd, "./build/config.json");
   fs.copyFileSync(src, dist);
 }
-copyConfFile(src, dist);
+
+function copyConfSh() {
+  const src = path.resolve(cwd, "./script/start.sh");
+  const dist = path.resolve(cwd, "./build/start.sh");
+  fs.copyFileSync(src, dist);
+}
+copyConfFile();
+copyConfSh();

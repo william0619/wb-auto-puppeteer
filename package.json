@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node src/main.mjs",
     "copyFile": "node script/copy.js",
-    "build": " rimraf ./dist && rollup -c",
-    "build:pkg": "pkg .",
+    "build": "rimraf ./dist && rollup -c",
+    "build:pkg": "rimraf ./build && pkg . && npm run copyFile",
     "build:pkg2": "pkg ./test/test.js --target node18-macos-arm64  --output ./build2"
   },
   "type": "module",
@@ -19,7 +19,9 @@
       "config.json"
     ],
     "targets": [
-      "node18-macos-arm64"
+      "node18-macos-arm64",
+      "node18-macos-x64",
+      "node18-win-x64"
     ],
     "outputPath": "./build"
   },
