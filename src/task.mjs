@@ -10,11 +10,16 @@ export class Task {
    * **/
   #browser;
 
+  #config;
+
   /**
    * @param browser  {Browser}
+   * @param config  {any}
    * **/
-  constructor(browser) {
+  constructor(browser, config) {
     this.#browser = browser;
+    this.#config = config;
+    console.log("config", this.#config);
   }
 
   /**
@@ -49,8 +54,12 @@ export class Task {
   }
 
   async getPreview(page, cid) {
-    const startDate = dayjs().format("YYYY-MM-DD");
-    const endDate = dayjs().format("YYYY-MM-DD");
+    let startDate = dayjs().format("YYYY-MM-DD");
+    let endDate = dayjs().format("YYYY-MM-DD");
+    if (this.#config?.dateRange && this.#config?.dateRange.length === 2) {
+      startDate = this.#config?.dateRange[0];
+      endDate = this.#config?.dateRange[1];
+    }
     return await page.evaluate(
       async ({ cid, startDate, endDate }) => {
         const res = await window.fetch(

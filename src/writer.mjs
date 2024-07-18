@@ -6,12 +6,18 @@
 import fs from "node:fs";
 import path from "node:path";
 import dayjs from "dayjs";
-import { nanoid } from "nanoid";
 import xlsx from "node-xlsx";
+import { nanoid } from "./utils.mjs";
 
 const cwd = process.cwd();
 
 export const reportPath = path.resolve(cwd, "./report");
+// 判断有没有 report 文件夹没有就创建一个
+const createReportFolder = () => {
+  if (!fs.existsSync(reportPath)) {
+    fs.mkdirSync(reportPath);
+  }
+};
 
 export function filename(ext = "txt") {
   const date = dayjs().format("YYYY-MM-DD_HH:mm");
@@ -74,7 +80,7 @@ export function createReportFile(dataSource) {
   const buffer = xlsx.build([{ name: "sheet", data: data }], {
     sheetOptions,
   }); // Returns a buffe
-
+  createReportFolder();
   fs.writeFileSync(path.join(reportPath, filename("xlsx")), buffer);
 }
 // Or var xlsx = require('node-xlsx').default;

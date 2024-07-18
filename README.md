@@ -8,3 +8,11 @@
 ````shell
 如何有 brew 直接使用 
 ````
+```shell
+
+ "targets": [
+      "node18-macos-arm64",
+      "node18-macos-x64",
+      "node18-win-x64"
+    ],
+```
