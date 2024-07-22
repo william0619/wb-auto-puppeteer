@@ -4,10 +4,20 @@
  **/
 import fs from "node:fs/promises";
 import path from "node:path";
+import nodeFetch from "node-fetch";
 
 export async function connectInfo() {
-  const json = await fetch("http://localhost:9222/json/version");
-  return await json.json();
+  try {
+    const res = await nodeFetch("http://localhost:9222/json/version", {
+      method: "get",
+    });
+    const data = await res.json();
+    console.log("browser config", data);
+    return data;
+  } catch (error) {
+    console.log("error: 无法连接 http://localhost:9222/json/version");
+    return {};
+  }
 }
 
 export async function getConfigJson() {

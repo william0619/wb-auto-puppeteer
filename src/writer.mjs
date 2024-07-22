@@ -63,6 +63,9 @@ export function createReportFile(dataSource) {
     { name: "激活数", width: 15, key: "bhv_70000001" },
     { name: "单次激活成本", width: 15, key: "bhv_70000001_cost" },
     { name: "单次激活成本", width: 15, key: "bhv_70000001_cost" },
+
+    { name: "开始日期", width: 20, key: "startDate" },
+    { name: "结束日期", width: 20, key: "endDate" },
   ];
 
   const colsName = cols.map((i) => i.name);

@@ -3,6 +3,7 @@
  create_at:2024/7/17
  **/
 import dayjs from "dayjs";
+import { sleep } from "./utils.mjs";
 
 export class Task {
   /**
@@ -31,7 +32,16 @@ export class Task {
     const userInfo = await this.getUserInfo(page, cid);
     const preview = await this.getPreview(page, cid);
     const finance = await this.getAccountFinance(page, cid);
-    return { ...userInfo, ...preview, ...finance };
+    const { startDate, endDate } = this.getDateRange();
+    await sleep(500);
+    await page.close();
+    return {
+      ...userInfo,
+      ...preview,
+      ...finance,
+      startDate: startDate,
+      endDate: endDate,
+    };
   }
 
   async getUserInfo(page, cid) {
@@ -54,12 +64,7 @@ export class Task {
   }
 
   async getPreview(page, cid) {
-    let startDate = dayjs().format("YYYY-MM-DD");
-    let endDate = dayjs().format("YYYY-MM-DD");
-    if (this.#config?.dateRange && this.#config?.dateRange.length === 2) {
-      startDate = this.#config?.dateRange[0];
-      endDate = this.#config?.dateRange[1];
-    }
+    const { startDate, endDate } = this.getDateRange();
     return await page.evaluate(
       async ({ cid, startDate, endDate }) => {
         const res = await window.fetch(
@@ -94,5 +99,15 @@ export class Task {
       { id: cid },
     );
     return res;
+  }
+
+  getDateRange() {
+    let startDate = dayjs().format("YYYY-MM-DD");
+    let endDate = dayjs().format("YYYY-MM-DD");
+    if (this.#config?.dateRange && this.#config?.dateRange.length === 2) {
+      startDate = this.#config?.dateRange[0];
+      endDate = this.#config?.dateRange[1];
+    }
+    return { startDate, endDate };
   }
 }

@@ -6,7 +6,7 @@
     "start": "node src/main.mjs",
     "copyFile": "node script/copy.js",
     "build": "rimraf ./dist && rollup -c",
-    "build:pkg": "rimraf ./build && pkg . && npm run copyFile",
+    "build:pkg": "npm run build &&rimraf ./build && pkg . && npm run copyFile",
     "build:pkg2": "pkg ./test/test.js --target node18-macos-arm64  --output ./build2"
   },
   "type": "module",
@@ -33,6 +33,7 @@
   "description": "",
   "dependencies": {
     "dayjs": "^1.11.11",
+    "node-fetch": "^3.3.2",
     "node-xlsx": "^0.24.0",
     "puppeteer": "^22.13.0",
     "puppeteer-core": "^22.13.0"

@@ -25,7 +25,7 @@ export default {
     //   resolveOnly: ["puppeteer-core", "dayjs", "node-xlsx", "nanoid"],
     // }),
     commonjs(),
-    // terser(),
+    terser(),
   ],
   external: ["puppeteer"],
 };
