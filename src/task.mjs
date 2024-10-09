@@ -20,7 +20,6 @@ export class Task {
   constructor(browser, config) {
     this.#browser = browser;
     this.#config = config;
-    console.log("config", this.#config);
   }
 
   /**

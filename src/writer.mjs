@@ -84,6 +84,8 @@ export function createReportFile(dataSource) {
     sheetOptions,
   }); // Returns a buffe
   createReportFolder();
-  fs.writeFileSync(path.join(reportPath, filename("xlsx")), buffer);
+  const _reportPath = path.join(reportPath, filename("xlsx"));
+  fs.writeFileSync(_reportPath, buffer);
+  console.log("生成报告成功：", _reportPath);
 }
 // Or var xlsx = require('node-xlsx').default;
