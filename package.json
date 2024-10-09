@@ -4,12 +4,12 @@
   "main": "./src/main.mjs",
   "scripts": {
     "start": "node src/main.mjs",
-    "copyFile": "node script/copy.js",
+    "copyFile": "node script/copy.mjs",
     "build": "rimraf ./dist && rollup -c",
     "build:pkg": "npm run build &&rimraf ./build && pkg . && npm run copyFile",
     "build:pkg2": "pkg ./test/test.js --target node18-macos-arm64  --output ./build2"
   },
-  "type": "module",
+  "type": "commonjs",
   "bin": "./dist/main.js",
   "pkg": {
     "scripts": "dist/**/*.js",
@@ -48,6 +48,7 @@
     "rimraf": "^6.0.1",
     "rollup": "^4.24.0",
     "rollup-plugin-filesize": "^10.0.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-node-externals": "^7.1.3"
   }
 }

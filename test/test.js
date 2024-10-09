@@ -1,6 +1,5 @@
-import { launchChrome } from "../src/utils.mjs";
-
 (async () => {
-  const ws = await launchChrome();
-  console.log("ws: ", ws);
+  // const ws = await launchChrome();
+
+  console.log("fetch: ", fetch);
 })();

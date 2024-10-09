@@ -6,6 +6,8 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
+import nodeExternals from "rollup-plugin-node-externals";
+import filesize from "rollup-plugin-filesize";
 
 export default {
   input: "./src/main.mjs",
@@ -15,17 +17,19 @@ export default {
   },
   plugins: [
     babel({
+      sourceMap: true,
       babelHelpers: "bundled",
       // skipPreflightCheck: true,
       exclude: "node_modules/**",
     }),
+    // json(),
+    nodeExternals({ exclude: ["node-fetch"] }),
     nodeResolve(),
     // nodeResolve({
-    //   browser: true,
-    //   resolveOnly: ["puppeteer-core", "dayjs", "node-xlsx", "nanoid"],
+    //   resolveOnly: ["dayjs", "node-fetch"],
     // }),
     commonjs(),
-    terser(),
+    filesize(),
   ],
   external: ["puppeteer"],
 };

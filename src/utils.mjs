@@ -4,7 +4,7 @@
  **/
 import fs from "node:fs/promises";
 import path from "node:path";
-import nodeFetch from "node-fetch";
+// import nodeFetch from "node-fetch";
 import os from "node:os";
 import { spawn } from "node:child_process";
 
@@ -20,7 +20,7 @@ export function executableDir() {
 }
 
 export async function connectWs() {
-  const res = await nodeFetch("http://localhost:9222/json/version", {
+  const res = await fetch("http://localhost:9222/json/version", {
     method: "get",
   });
   const data = await res.json();

@@ -20,13 +20,10 @@ async function main() {
   // return;
   const browser = await puppeteer.connect({
     browserWSEndpoint: wsEndpoint,
-    executablePath: cPath,
-    headless: config.headless,
-    devtools: false,
+    // executablePath: cPath,
+    // headless: config.headless,
+    // devtools: false,
     // userDataDir: getUserDataPath(),
-    // headless: false,
-    // browserWSEndpoint: info?.webSocketDebuggerUrl ?? "ws://localhost:9222",
-    // browserWSEndpoint: "ws://localhost:9222",
     defaultViewport: {
       width: 0,
       height: 0,

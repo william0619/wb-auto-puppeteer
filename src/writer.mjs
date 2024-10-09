@@ -7,11 +7,9 @@ import fs from "node:fs";
 import path from "node:path";
 import dayjs from "dayjs";
 import xlsx from "node-xlsx";
-import { nanoid } from "./utils.mjs";
+import { executableDir, nanoid } from "./utils.mjs";
 
-const cwd = process.cwd();
-
-export const reportPath = path.resolve(cwd, "./report");
+export const reportPath = path.resolve(executableDir(), "./report");
 // 判断有没有 report 文件夹没有就创建一个
 const createReportFolder = () => {
   if (!fs.existsSync(reportPath)) {
@@ -23,15 +21,6 @@ export function filename(ext = "txt") {
   const date = dayjs().format("YYYY-MM-DD_HH:mm");
   return `${date}_${nanoid(8)}.${ext}`;
 }
-
-// export function writeReportStream() {
-//   const p = path.join(reportPath, filename());
-//   const writeStream = fs.createWriteStream(p, {
-//     flags: "w",
-//     encoding: "utf-8",
-//   });
-//   return writeStream;
-// }
 
 /**
  * @param dataSource {{[key:string]:string}[]}

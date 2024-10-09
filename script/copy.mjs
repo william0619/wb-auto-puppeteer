@@ -13,10 +13,10 @@ function copyConfFile() {
   fs.copyFileSync(src, dist);
 }
 
-function copyConfSh() {
-  const src = path.resolve(cwd, "./script/start.sh");
-  const dist = path.resolve(cwd, "./build/start.sh");
-  fs.copyFileSync(src, dist);
-}
+// function copyConfSh() {
+//   const src = path.resolve(cwd, "./script/start.sh");
+//   const dist = path.resolve(cwd, "./build/start.sh");
+//   fs.copyFileSync(src, dist);
+// }
 copyConfFile();
-copyConfSh();
+// copyConfSh();
